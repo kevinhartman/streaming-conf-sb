@@ -51,6 +51,8 @@ object ConfigManagerSingleton extends IMessageHandler {
     * Called by Service Bus client library when a new message arrives in the queue.
     */
   override def onMessageAsync(message: IMessage): CompletableFuture[Void] = {
+    implicit val _ = net.liftweb.json.DefaultFormats
+
     val messageStr = new String(message.getBody, "UTF-8")
     val json = parse(messageStr)
     val config = json.extractOpt[Config]

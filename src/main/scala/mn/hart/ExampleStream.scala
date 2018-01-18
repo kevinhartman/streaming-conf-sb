@@ -26,7 +26,7 @@ object ExampleStream {
     }
 
     val exampleRDDs = mutable.Queue(
-      (0 to 100).toList.map(_ => batch) :_*
+      (0 to 99).toList.map(_ => batch) :_*
     )
 
     streamingContext.queueStream[String](exampleRDDs)

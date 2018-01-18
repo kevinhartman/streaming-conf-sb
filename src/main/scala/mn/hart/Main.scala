@@ -2,14 +2,14 @@ package mn.hart
 
 import java.time.Duration
 
-import com.microsoft.azure.servicebus.{MessageHandlerOptions, QueueClient, ReceiveMode}
+import com.microsoft.azure.servicebus._
 import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder
 import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 object Main extends App {
 
-  if (args.length != 3) throw new IllegalArgumentException("req args: checkpointDir, serviceBusConnStr, serviceBusQueue")
+  if (args.length < 3) throw new IllegalArgumentException("req args: checkpointDir, serviceBusConnStr, serviceBusQueue")
 
   // Get checkpoint dir from args
   val checkpointDir :: busConnStr :: busQueueName :: _ = args.toList
